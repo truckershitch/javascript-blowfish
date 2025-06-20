@@ -201,9 +201,9 @@ var Blowfish = function(key, mode) {
   
       var encryptedString = "";
       for (var i = 0; i < blocks; i++) {
-        var block = string.substr(i * 16, 16);
-        if (block.length < 16) {
-          var count = 16 - block.length;
+        var block = string.substr(i * 8, 8);
+        if (block.length < 8) {
+          var count = 8 - block.length;
           while (0 < count--) {
             block += "\0";
           }
@@ -290,8 +290,8 @@ var Blowfish = function(key, mode) {
   
       var decryptedString = "";
       for (var i = 0; i < blocks; i++) {
-        var block = string.substr(i * 16, 16);
-        if (block.length < 16) {
+        var block = string.substr(i * 8, 8);
+        if (block.length < 8) {
           throw new Error("Зашифрованная строка повреждена: длинна зашифрованной строки должна быть кратна 8 баыйтам.");
         }
         var xL, xR, xLxR;
